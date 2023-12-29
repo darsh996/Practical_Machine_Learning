@@ -40,9 +40,24 @@ rms = sqrt(mean_squared_error(y_test, MA_series))
 print(rms)
 
 
+###########SES
+from statsmodels.tsa.api import SimpleExpSmoothing
+
+alpha = 0.5
+ses = SimpleExpSmoothing(y_train)
+fit1 = ses.fit(smoothing_level=alpha)
+fcast1 = fit1.forecast(len(y_test))
+
+#plot
+y_train.plot(color="Blue", label='train')
+y_test.plot(color='pink',label='Test')
+fcast1.plot(color='purple',label='Forecast')
+plt.legend(loc='best')
+plt.show()
 
 
-
+plt.legend(loc = 'best')
+plt.show()
 
 
 
